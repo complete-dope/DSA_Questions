@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.html": "html",
+        "*.jsx": "javascriptreact",
+        "*.js": "javascriptreact",
+        "*.hbs": "handlebars",
+        "iostream": "cpp"
+    }
+}
