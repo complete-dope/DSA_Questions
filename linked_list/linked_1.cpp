@@ -127,23 +127,128 @@ void AddTwoNumbers(Node* &head1 , Node* &head2)
     printLinkedList(headret->next);
 }
 
+Node* reverseMyList(Node* &head , int k)
+{
+    //iteratively reverse my list
+    //reverse linked list in k nodes
+    if(head == NULL){
+        return NULL;
+    }
+    
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* futu = head;
+    int cnt = 0;
+    while (cnt<k && curr != NULL)
+    {
+        cnt++;
+        futu = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = futu;
+    }
+    head->next = reverseMyList(futu ,k);
+    return prev;
+    
+}
+
+//LC - 143 
+//many methods are possible just choose the best one out of them 
+void ReorderList(Node* head)
+{
+    // assumption duplicates doesnt exists 
+    /*
+    stack<int> OrderMaintain;
+
+    Node* temp = head;
+    while(temp != NULL)
+    {
+        cout<<"no"<<" ";
+        OrderMaintain.push(temp->data);
+        temp = temp->next;
+    }
+
+    temp = head;
+    Node* futu = head;
+
+    while(temp->data != OrderMaintain.top() && temp->next->data != OrderMaintain.top())
+    {
+        cout<<"yes"<<" ";
+        futu = temp->next;
+        Node* newNode = new Node(OrderMaintain.top());
+        OrderMaintain.pop();
+        temp->next = newNode;
+        newNode->next = futu;
+        temp = futu;
+    }    
+    if(temp->next->data == OrderMaintain.top())
+    {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+    printLinkedList(head);
+    */
+
+   Node * temp = head;
+    stack<Node* > OrderMaintain;
+     while(temp != NULL)
+    {
+        cout<<"no"<<" ";
+        OrderMaintain.push(temp);
+        temp = temp->next;
+    }
+
+    temp = head;
+    Node* futu = head;
+
+    while(temp!= OrderMaintain.top() && temp->next!= OrderMaintain.top())
+    {
+        cout<<"yes"<<" ";
+        futu = temp->next;
+        Node* newNode = OrderMaintain.top();
+        temp->next = OrderMaintain.top();
+        OrderMaintain.pop();
+        newNode->next = futu;
+        temp = futu;
+    }    
+    if(temp->next == OrderMaintain.top())
+    {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+    printLinkedList(head);
+}
+
+
+
 int main(){
     Node* head = NULL;
+    insertAtTail(head , 2);
+    insertAtTail(head , 3);
+    insertAtTail(head , 4);
     insertAtTail(head , 9);
+    insertAtTail(head , 5);
+    insertAtTail(head , 4);
     insertAtTail(head , 9);
-    insertAtTail(head , 9);
-    // insertAtTail(head , 9);
-    // insertAtTail(head , 5);
     // insertAtTail(head , 6);
+    cout<<"linked list ";
     printLinkedList(head);
     // printLinkedList(head);
-    Node* head3 = NULL;
-    insertAtTail(head3 , 9);
-    insertAtTail(head3 , 9);
-    insertAtTail(head3 , 9);
-    insertAtTail(head3 , 4);
-    printLinkedList(head3);
-    cout<<"adding 2 numbers "<<endl;
-    AddTwoNumbers(head , head3);
+    
+    // Node* head3 = NULL;
+    
+    // insertAtTail(head3 , 9);
+    // insertAtTail(head3 , 9);
+    // insertAtTail(head3 , 9);
+    // insertAtTail(head3 , 4);
+    // printLinkedList(head3);
+    // cout<<"adding 2 numbers "<<endl;
+    // AddTwoNumbers(head , head3);
+
+    // Node* reversed = reverseMyList(head , 2);
+    // printLinkedList(reversed);
+    cout<<"reorder list";
+    ReorderList(head);
+    cout<<"listed";
     return 0;
 }

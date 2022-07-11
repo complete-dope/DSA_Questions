@@ -2,10 +2,11 @@
 Very very impt question --> 
 */
 // Questions on this concept :
-// no of times a sorted array is rotated
-// find min in a rotated sorted array
-// find least element
-// search in a rotated sorted array 
+
+// Q-> no of times a sorted array is rotated
+// Q-> find min in a rotated sorted array
+// Q-> find least element
+// Q-> search in a rotated sorted array 
 
 #include<iostream>
 #include<bits/stdc++.h>

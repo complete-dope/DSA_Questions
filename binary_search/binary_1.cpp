@@ -1,6 +1,8 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
+
+
 vector<int> searchRange(vector<int>& nums, int target) {
     //solve it using binary search algorithmn
     
